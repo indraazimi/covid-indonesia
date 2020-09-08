@@ -9,16 +9,23 @@
 
 package com.indraazimi.covid19id
 
+import com.indraazimi.covid19id.model.Data
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 object Covid19Api {
 
     private const val BASE_URL = "https://data.covid19.go.id/public/api/"
 
+    private val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
     private val retrofit = Retrofit.Builder()
-        .addConverterFactory(ScalarsConverterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
         .baseUrl(BASE_URL)
         .build()
 
@@ -26,6 +33,6 @@ object Covid19Api {
 
     interface ApiService {
         @GET("update.json")
-        suspend fun getData(): String
+        suspend fun getData(): Data
     }
 }
