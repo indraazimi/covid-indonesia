@@ -11,7 +11,11 @@ package com.indraazimi.covid19id
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +23,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        ViewModelProvider(this).get(MainViewModel::class.java)
+        val adapter = MainAdapter()
+        recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
+
+        val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel.getData().observe(this, Observer { adapter.setData(it) })
     }
 }
