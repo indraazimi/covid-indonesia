@@ -11,6 +11,7 @@ package com.indraazimi.covid19id
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -29,5 +30,21 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.getData().observe(this, Observer { adapter.setData(it) })
+        viewModel.getStatus().observe(this, Observer { updateProgress(it) })
+    }
+
+    private fun updateProgress(status: ApiStatus) {
+        when (status) {
+            ApiStatus.LOADING -> {
+                progressBar.visibility = View.VISIBLE
+            }
+            ApiStatus.SUCCESS -> {
+                progressBar.visibility = View.GONE
+            }
+            ApiStatus.FAILED -> {
+                progressBar.visibility = View.GONE
+                networkError.visibility = View.VISIBLE
+            }
+        }
     }
 }
