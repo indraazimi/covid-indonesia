@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021 Indra Azimi. All rights reserved.
+  ~
+  ~ Dibuat untuk kelas Pemrograman untuk Perangkat Bergerak 2.
+  ~ Dilarang melakukan penggandaan dan atau komersialisasi,
+  ~ sebagian atau seluruh bagian, baik cetak maupun elektronik
+  ~ terhadap project ini tanpa izin pemilik hak cipta.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:viewBindingIgnore="true">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/app_name"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dataTextView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:text="@string/belum_ada_data"
+        android:textSize="14sp" />
+</LinearLayout>
