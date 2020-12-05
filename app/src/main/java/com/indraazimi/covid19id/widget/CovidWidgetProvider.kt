@@ -24,6 +24,12 @@ import java.util.*
 class CovidWidgetProvider : AppWidgetProvider() {
 
     companion object {
+        fun updateAllWidget(context: Context, manager: AppWidgetManager, ids: IntArray) {
+            for (id in ids) {
+                updateAppWidget(context, manager, id)
+            }
+        }
+
         private fun updateAppWidget(context: Context, manager: AppWidgetManager, id: Int) {
             val intent = Intent(context, MainActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
@@ -58,8 +64,6 @@ class CovidWidgetProvider : AppWidgetProvider() {
 
         // Pengguna dapat menambahkan lebih dari 1 widget di home screen
         // Jadi kita harus melakukan update ke semua widget yang ada.
-        for (id in ids) {
-            updateAppWidget(context, manager, id)
-        }
+        updateAllWidget(context, manager, ids)
     }
 }

@@ -9,6 +9,9 @@
 
 package com.indraazimi.covid19id.widget
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.content.Context
 import android.content.SharedPreferences
 import com.indraazimi.covid19id.model.Harian
 
@@ -23,5 +26,14 @@ object WidgetUtils {
             putInt(KEY_DATA, data.jumlahPositif.value)
             apply()
         }
+    }
+
+    fun updateUI(context: Context) {
+        val appContext = context.applicationContext
+        val widgetManager = AppWidgetManager.getInstance(appContext)
+        val widgetIds = widgetManager.getAppWidgetIds(
+            ComponentName(appContext, CovidWidgetProvider::class.java)
+        )
+        CovidWidgetProvider.updateAllWidget(appContext, widgetManager, widgetIds)
     }
 }

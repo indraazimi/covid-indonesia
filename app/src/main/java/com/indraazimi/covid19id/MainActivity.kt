@@ -95,6 +95,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.getData().observe(this, {
             myAdapter.setData(it)
             WidgetUtils.saveData(prefs, it.last())
+            WidgetUtils.updateUI(this)
         })
         viewModel.getEntries().observe(this, { updateChart(it) })
         viewModel.getStatus().observe(this, { updateProgress(it) })
