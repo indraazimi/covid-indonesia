@@ -10,6 +10,7 @@
 package com.indraazimi.covid19id
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -17,6 +18,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.components.Legend
@@ -28,6 +30,7 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.indraazimi.covid19id.databinding.ActivityMainBinding
+import com.indraazimi.covid19id.widget.WidgetUtils
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,6 +38,10 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this).get(MainViewModel::class.java)
+    }
+
+    private val prefs: SharedPreferences by lazy {
+        PreferenceManager.getDefaultSharedPreferences(this)
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -85,7 +92,10 @@ class MainActivity : AppCompatActivity() {
             override fun onNothingSelected() {}
         })
 
-        viewModel.getData().observe(this, { myAdapter.setData(it) })
+        viewModel.getData().observe(this, {
+            myAdapter.setData(it)
+            WidgetUtils.saveData(prefs, it.last())
+        })
         viewModel.getEntries().observe(this, { updateChart(it) })
         viewModel.getStatus().observe(this, { updateProgress(it) })
     }
