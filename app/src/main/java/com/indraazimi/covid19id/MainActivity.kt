@@ -27,6 +27,7 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
+import com.indraazimi.covid19id.widget.CovidWidgetService
 import com.indraazimi.covid19id.widget.PrefUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
@@ -82,6 +83,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.getData().observe(this, Observer {
             adapter.setData(it)
             PrefUtils.saveData(prefs, it.last())
+            CovidWidgetService.startActionUpdateUI(this)
         })
         viewModel.getEntries().observe(this, Observer { updateChart(it) })
         viewModel.getStatus().observe(this, Observer { updateProgress(it) })
