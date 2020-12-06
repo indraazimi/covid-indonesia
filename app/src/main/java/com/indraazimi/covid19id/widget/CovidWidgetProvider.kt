@@ -14,10 +14,15 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.widget.RemoteViews
 import androidx.preference.PreferenceManager
+import com.indraazimi.covid19id.Covid19Api
 import com.indraazimi.covid19id.MainActivity
 import com.indraazimi.covid19id.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -41,6 +46,13 @@ class CovidWidgetProvider : AppWidgetProvider() {
             val data = prefs.getInt(PrefUtils.KEY_DATA, -1)
             updateUI(context, views, date, data)
 
+            val intentRefresh = Intent(context, CovidWidgetProvider::class.java)
+            intentRefresh.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            intentRefresh.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(id))
+            val pendingRefresh = PendingIntent.getBroadcast(context, id,
+                intentRefresh, PendingIntent.FLAG_UPDATE_CURRENT)
+            views.setOnClickPendingIntent(R.id.refreshButton, pendingRefresh)
+
             manager.updateAppWidget(id, views)
         }
 
@@ -62,8 +74,19 @@ class CovidWidgetProvider : AppWidgetProvider() {
     override fun onUpdate(context: Context?, manager: AppWidgetManager?, ids: IntArray?) {
         if (context == null || manager == null || ids == null) return
 
-        // Pengguna dapat menambahkan lebih dari 1 widget di home screen
-        // Jadi kita harus melakukan update ke semua widget yang ada.
-        updateAllWidget(context, manager, ids)
+        // Lakukan request data ke server dulu, baru update semua widget
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val result = Covid19Api.service.getData()
+                PrefUtils.saveData(prefs, result.update.harian.last())
+            }
+            catch (e: Exception) {
+                Log.e("CovidWidgetProvider", "Error: ${e.message}")
+            }
+            finally {
+                updateAllWidget(context, manager, ids)
+            }
+        }
     }
 }

@@ -16,4 +16,5 @@
     <string name="kasus_positif">kasus positif</string>
     <string name="sad_emoji">:(</string>
     <string name="klik_refresh">Klik tombol refresh</string>
+    <string name="refresh">Refresh</string>
 </resources>
