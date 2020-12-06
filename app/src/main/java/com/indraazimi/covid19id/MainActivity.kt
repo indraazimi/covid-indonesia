@@ -73,7 +73,8 @@ class MainActivity : AppCompatActivity() {
         // RecyclerView akan scroll menampilkan data yang sesuai
         chart.setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
             override fun onValueSelected(entry: Entry?, highlight: Highlight) {
-                recyclerView.scrollToPosition(highlight.x.toInt())
+                val pos = adapter.itemCount - highlight.x.toInt()
+                recyclerView.scrollToPosition(pos)
             }
 
             override fun onNothingSelected() {}
