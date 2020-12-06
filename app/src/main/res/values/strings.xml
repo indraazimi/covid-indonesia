@@ -13,4 +13,7 @@
     <string name="network_error">Network error</string>
     <string name="belum_ada_data">Belum ada data</string>
     <string name="jumlah_kasus_positif">Jumlah kasus positif per hari</string>
+    <string name="kasus_positif">kasus positif</string>
+    <string name="sad_emoji">:(</string>
+    <string name="klik_refresh">Klik tombol refresh</string>
 </resources>
