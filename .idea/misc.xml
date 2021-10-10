@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/My Documents/Indra/Pemrograman/Mobpro2/Covid19ID/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.20833333333333334" />
+        <entry key="..\:/My Documents/Indra/Pemrograman/Mobpro2/Covid19ID/app/src/main/res/layout/activity_maps.xml" value="0.15579710144927536" />
+        <entry key="..\:/My Documents/Indra/Pemrograman/Mobpro2/Covid19ID/app/src/main/res/menu/main_menu.xml" value="0.1921875" />
         <entry key="..\:/My Documents/Indra/Pemrograman/Mobpro2/Covid19IDnew/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.20512820512820512" />
         <entry key="..\:/My Documents/Indra/Pemrograman/Mobpro2/Covid19IDnew/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20512820512820512" />
         <entry key="..\:/My Documents/Indra/Pemrograman/Mobpro2/Covid19IDnew/app/src/main/res/layout/activity_main.xml" value="0.1213768115942029" />

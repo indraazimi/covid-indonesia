@@ -10,6 +10,9 @@
 package com.indraazimi.covid19id
 
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -85,6 +88,19 @@ class MainActivity : AppCompatActivity() {
         viewModel.getData().observe(this, { myAdapter.setData(it) })
         viewModel.getEntries().observe(this, { updateChart(it) })
         viewModel.getStatus().observe(this, { updateProgress(it) })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_maps) {
+            Log.d("MAPS", "Menu maps diklik!")
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun updateChart(entries: List<Entry>) {
