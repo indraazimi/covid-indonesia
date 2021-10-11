@@ -14,4 +14,5 @@
     <string name="belum_ada_data">Belum ada data</string>
     <string name="jumlah_kasus_positif">Jumlah kasus positif per hari</string>
     <string name="peta">Peta Sebaran Kasus</string>
+    <string name="jumlah_dirawat">Jumlah dirawat: %1$,d orang</string>
 </resources>
