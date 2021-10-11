@@ -9,8 +9,8 @@
 
 package com.indraazimi.covid19id
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_maps) {
-            Log.d("MAPS", "Menu maps diklik!")
+            startActivity(Intent(this, MapsActivity::class.java))
             return true
         }
         return super.onOptionsItemSelected(item)
