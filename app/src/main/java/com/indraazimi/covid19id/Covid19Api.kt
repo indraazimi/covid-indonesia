@@ -10,6 +10,7 @@
 package com.indraazimi.covid19id
 
 import com.indraazimi.covid19id.model.Data
+import com.indraazimi.covid19id.model.ListProvinsi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -36,5 +37,8 @@ object Covid19Api {
     interface ApiService {
         @GET("update.json")
         suspend fun getData(): Data
+
+        @GET("prov.json")
+        suspend fun getProvinsi(): ListProvinsi
     }
 }

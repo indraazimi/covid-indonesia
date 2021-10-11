@@ -10,13 +10,17 @@
 package com.indraazimi.covid19id
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+
+    private val viewModel: MapsViewModel by lazy {
+        ViewModelProvider(this).get(MapsViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +32,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(gMap: GoogleMap) {
-        Log.d("MAPS", "Peta telah siap!")
+        viewModel.requestData()
     }
 }
