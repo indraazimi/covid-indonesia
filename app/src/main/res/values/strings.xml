@@ -15,4 +15,8 @@
     <string name="jumlah_kasus_positif">Jumlah kasus positif per hari</string>
     <string name="peta">Peta Sebaran Kasus</string>
     <string name="jumlah_dirawat">Jumlah dirawat: %1$,d orang</string>
+    <string name="normal_map">Normal Map</string>
+    <string name="hybrid_map">Hybrid Map</string>
+    <string name="satellite_map">Satellite Map</string>
+    <string name="terrain_map">Terrain Map</string>
 </resources>
