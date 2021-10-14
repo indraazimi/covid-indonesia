@@ -1,13 +1,16 @@
 # Covid-19 Indonesia
 
-Aplikasi Android sederhana yang menampilkan tren kasus positif Covid-19 di Indonesia. Data diambil dari API Gugus Tugas Percepatan Penanganan Covid-19. Screenshot di bawah adalah tren dari 2 Maret 2020 - 25 September 2021. Semoga pandemi ini segera berlalu.
+Aplikasi Android sederhana yang menampilkan tren kasus positif Covid-19 di Indonesia. Data diambil dari API Gugus Tugas Percepatan Penanganan Covid-19. Screenshot di bawah adalah tren dari 2 Maret 2020 - 13 Oktober 2021. Semoga pandemi ini segera berlalu.
 
-<img src="screenshots/main.png" width="250">
+Tampilan Utama                              | Tampilan Peta
+--------------------------------------------|----------------------------------------------
+<img src="screenshots/main.png" width="250">|<img src="screenshots/maps.png" width="250">
 
 Aplikasi ini menggunakan beberapa library, diantaranya:
 - Retrofit, untuk request data ke server
 - Moshi, untuk mengubah JSON string ke POJO
 - MPAndroidChart, untuk menampilkan grafik
+- Google Maps SDK, untuk menampilkan peta
 
 Punya pertanyaan atau masukan? Silahkan disampaikan melalui issue repository ini.
 
