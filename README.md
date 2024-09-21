@@ -1,5 +1,9 @@
 # Covid-19 Indonesia
 
+**Repository diarsipkan** karena materi Mobpro 2 mulai September 2024 sudah menggunakan Jetpack Compose untuk layout, dan menggunakan studi kasus yang berbeda. Untuk melihat project terbaru, silahkan kunjungi repo [indraazimi/mobpro2-compose](https://github.com/indraazimi/mobpro2-compose) 😊
+
+..
+
 Aplikasi Android yang menampilkan tren kasus positif Covid-19 di Indonesia. Data diambil dari API Gugus Tugas Percepatan Penanganan Covid-19. Screenshot di bawah adalah tren dari 2 Maret 2020 - 13 Oktober 2021. Semoga pandemi ini segera berlalu.
 
 Tampilan Utama                              | Tampilan Peta                              | Widget Aplikasi
